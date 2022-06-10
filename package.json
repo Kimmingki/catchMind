@@ -1,0 +1,20 @@
+{
+  "name": "catchMine",
+  "version": "1.0.0",
+  "description": "RealTime 그림 그리기, 채팅 시스템까지~ 아자아자!💪",
+  "main": "index.js",
+  "repository": "https://github.com/Kimmingki/catchMine.git",
+  "author": "김민기 <a01050919568@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/core": "^7.18.2",
+    "@babel/node": "^7.17.10",
+    "@babel/preset-env": "^7.18.2",
+    "express": "^4.18.1",
+    "nodemon": "^2.0.16",
+    "socket.io": "^4.5.1"
+  },
+  "scripts": {
+    "dev:server": "nodemon --exec src/server.js"
+  }
+}
