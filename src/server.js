@@ -10,11 +10,11 @@ const app = express();
 app.set("view engine", "pug");
 app.set("views", join(__dirname, "views"));
 
-// 정적 파일 제공
-app.use(express.static(join(__dirname, "static")));
-
 // 로그
 app.use(logger("dev"));
+
+// 정적 파일 제공
+app.use(express.static(join(__dirname, "static")));
 
 // routing
 app.get("/", (req, res) => res.render("home"));
@@ -26,4 +26,6 @@ const server = app.listen(PORT, handleListening);
 
 const io = socketIo(server);
 
-io.on("connection", () => console.log("Somebody Connected"));
+io.on("connection", (socket) => {
+  socket.broadcast.emit("hello");
+});
