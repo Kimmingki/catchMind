@@ -5,6 +5,7 @@
 - [x] Server - Server Listening
 - [x] Pug - view engine 설정
 - [x] Static - 정적 파일 설정
+- [x] ESLint
 - [ ] SocektIo
 
 ### 준비물
