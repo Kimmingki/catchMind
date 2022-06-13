@@ -19,4 +19,12 @@
 - nodemon
 - babel
 - express
+- eslint
 - socket.io
+- morgan
+
+### devDependencies
+
+- eslint-config-prettier
+- eslint-plugin-prettier
+- prettier
