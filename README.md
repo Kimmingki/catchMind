@@ -22,6 +22,9 @@
 - eslint
 - socket.io
 - morgan
+- gulp
+- gulp-sass
+- node-sass
 
 ### devDependencies
 
