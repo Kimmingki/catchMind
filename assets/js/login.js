@@ -9,6 +9,7 @@ const LOGGED_IN = "loggedIn";
 
 const nickname = localStorage.getItem(NICKNAME);
 
+// 로그인 이벤트 전송
 const logIn = (nickname) => {
   // eslint-disable-next-line no-undef
   const socket = io("/");
@@ -16,13 +17,7 @@ const logIn = (nickname) => {
   initSocket(socket);
 };
 
-if (nickname === null) {
-  body.className = LOGGED_OUT;
-} else {
-  body.className = LOGGED_IN;
-  logIn(nickname);
-}
-
+// 로그인 시 작동
 const handleFormSubmit = (e) => {
   e.preventDefault();
   const input = loginForm.querySelector("input");
@@ -32,6 +27,13 @@ const handleFormSubmit = (e) => {
   body.className = LOGGED_IN;
   logIn(value);
 };
+
+if (nickname === null) {
+  body.className = LOGGED_OUT;
+} else {
+  body.className = LOGGED_IN;
+  logIn(nickname);
+}
 
 if (loginForm) {
   loginForm.addEventListener("submit", handleFormSubmit);

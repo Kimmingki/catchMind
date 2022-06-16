@@ -1,3 +1,4 @@
+// 오타방지용
 const events = {
   setNickName: "setNickName",
   newUser: "newUser",
