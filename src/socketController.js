@@ -2,7 +2,7 @@ import events from "./events";
 
 const socketController = (socket) => {
   socket.on(events.setNickName, ({ nickname }) => {
-    console.log(nickname);
+    socket.broadcast.emit(events.newUser, { nickname });
     socket.nickname = nickname;
   });
 };
