@@ -1,3 +1,4 @@
+import { disableChat } from "./chat";
 import {
   disableCanvas,
   enableCanvas,
@@ -34,6 +35,7 @@ export const handleGameStarted = () => {
 export const handleLeaderNotif = ({ word }) => {
   enableCanvas();
   showControls();
+  disableChat();
   setNotif(`당신이 화가에요, 그림: ${word}`);
 };
 export const handleGameEnded = () => {

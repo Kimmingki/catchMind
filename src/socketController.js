@@ -42,6 +42,18 @@ const socketController = (socket, io) => {
     inProgress = false;
     superBroadcast(events.gameEnded);
   };
+
+  // 맞춘 사람 포인트 주고 게임 종료
+  const addPoints = (id) => {
+    sockets = sockets.map((socket) => {
+      if (socket.id === id) {
+        socket.points += 10;
+      }
+      return socket;
+    });
+    sendPlayerUpdate();
+    endGame();
+  };
   // --------------------------- end function -------------------------
 
   // ---------------------- start event ------------------------------
@@ -72,7 +84,15 @@ const socketController = (socket, io) => {
 
   // 메세지 이벤트 대기
   socket.on(events.sendMsg, ({ message }) => {
-    broadcast(events.newMsg, { message, nickname: socket.nickname });
+    if (message === word) {
+      superBroadcast(events.newMsg, {
+        message: `${socket.nickname} 님이 맞췄습니다. 정답: ${word}`,
+        nickname: "Bot",
+      });
+      addPoints(socket.id);
+    } else {
+      broadcast(events.newMsg, { message, nickname: socket.nickname });
+    }
   });
 
   // 캔버스 마우스 이벤트 대기

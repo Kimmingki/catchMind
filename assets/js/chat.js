@@ -29,3 +29,12 @@ export const handleNewMessage = ({ message, nickname }) =>
 if (sendMsg) {
   sendMsg.addEventListener("submit", handleSendMsg);
 }
+
+// 리더 입막음
+export const disableChat = () => {
+  sendMsg.style.display = "none";
+};
+
+export const enableChat = () => {
+  sendMsg.style.display = "flex";
+};
