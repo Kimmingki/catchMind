@@ -1,17 +1,27 @@
 import events from "./events";
 
-const socketController = (socket) => {
+// 유저 정보 array
+let sockets = [];
+
+const socketController = (socket, io) => {
   const broadcast = (event, data) => socket.broadcast.emit(event, data);
+  const superBroadcast = (event, data) => io.emit(event, data);
+  const sendPlayerUpdate = () =>
+    superBroadcast(events.playerUpdate, { sockets });
 
   // 로그인 이벤트 대기
   socket.on(events.setNickName, ({ nickname }) => {
     socket.nickname = nickname;
+    sockets.push({ id: socket.id, points: 0, nickname });
     broadcast(events.newUser, { nickname });
+    sendPlayerUpdate();
   });
 
   // 연결 해제 이벤트 대기
   socket.on(events.disconnect, () => {
+    sockets = sockets.filter((aSocket) => aSocket.id !== socket.id);
     broadcast(events.disconnected, { nickname: socket.nickname });
+    sendPlayerUpdate();
   });
 
   // 메세지 이벤트 대기
