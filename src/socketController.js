@@ -19,13 +19,20 @@ const socketController = (socket) => {
     broadcast(events.newMsg, { message, nickname: socket.nickname });
   });
 
+  // 캔버스 마우스 이벤트 대기
   socket.on(events.beginPath, ({ x, y }) =>
     broadcast(events.beganPath, { x, y })
   );
 
-  socket.on(events.strokePath, ({ x, y }) =>
-    broadcast(events.strokedPath, { x, y })
+  // 그림 그리기 이벤트 대기
+  socket.on(events.strokePath, ({ x, y, color }) =>
+    broadcast(events.strokedPath, { x, y, color })
   );
+
+  // 채우기 이벤트 대기
+  socket.on(events.fill, ({ color }) => {
+    broadcast(events.filled, { color });
+  });
 };
 
 export default socketController;
