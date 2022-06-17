@@ -1,4 +1,4 @@
-# CatchMine 따라해보기!
+# CatchMind 따라해보기!
 
 ## To Do:
 
