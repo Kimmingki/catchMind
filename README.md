@@ -4,8 +4,6 @@
 
 https://user-images.githubusercontent.com/27759684/174439068-162d85cd-f0e3-4d34-85f0-03de60d6c734.mp4
 
-<br>
-
 ---
 
 ### 기능 기획
@@ -23,8 +21,6 @@ https://user-images.githubusercontent.com/27759684/174439068-162d85cd-f0e3-4d34-
 
 통신은 대부분 SocketIO를 통하여 진행
 
-<br>
-
 ---
 
 ### Tech
@@ -34,8 +30,6 @@ https://user-images.githubusercontent.com/27759684/174439068-162d85cd-f0e3-4d34-
   - SocketIO
 - Client
   - Pug
-
-<br>
 
 ---
 
@@ -63,8 +57,6 @@ setNickname이라는 이벤트를 확인하면 전달받은 nickname을 저장�
 
 **유저가 서버에 접근해 닉네임을 입력하는 과정 속에서 이벤트를 발생시키는 내용은 login.js에서 확인할 수 있다.**
 
-<br>
-
 ---
 
 ### 퇴장
@@ -88,8 +80,6 @@ socket.on(events.disconnect, () => {
 if문을 통하여 유저가 1명 남았을 때 게임이 자동으로 종료되도록 설정하고
 <br>
 퇴장한 인원의 정보를 가져와 다른 인원에게 퇴장함을 알리고 유저 정보를 업데이트 한다.
-
-<br>
 
 ---
 
@@ -125,8 +115,6 @@ broadcast.emit을 통하여 다른 사람들에게 나의 메세지와 닉네임
 정답자와 정답을 확인하도록 한다.
 
 **채팅 전송 관련 로직은 chat.js에서 확인 할수 있다.**
-
-<br>
 
 ---
 
@@ -196,7 +184,5 @@ broadcast.emit을 통하여 다른 사람들에게 나의 메세지와 닉네임
   유저 정보를 업데이트 하고 게임 종료 로직이 다시 작동하도록 만들었다.
 
   **게임 기능에 관한 세부 로직은 plyaers.js에서 확인 할 수 있다.**
-
-  <br>
 
 ---
