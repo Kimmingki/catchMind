@@ -1,6 +1,8 @@
 # CatchMind 따라해보기!
 
 ## Preview
+https://user-images.githubusercontent.com/27759684/174439068-162d85cd-f0e3-4d34-85f0-03de60d6c734.mp4
+
 
 ### 기능 기획
 
