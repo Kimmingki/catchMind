@@ -1,33 +1,18 @@
 # CatchMind 따라해보기!
 
-## To Do:
+## Preview
 
-- [x] Server - Server Listening
-- [x] Pug - view engine 설정
-- [x] Static - 정적 파일 설정
-- [x] ESLint
-- [ ] SocektIo
+### 기능 기획
 
-### 준비물
+- 채팅 기능
+  - 닉네임
+  - 메세지
+    - 색상 구분
+- 그림판 기능
+  - 이전 drawing board 기능 따오기
+- 게임 기능
+  - 게임 시작 및 종료
+  - 정답자 포인트
+  - 제시어
 
-1. node.js
-2. chrome
-3. vscode
-
-### dependencies
-
-- nodemon
-- babel
-- express
-- eslint
-- socket.io
-- morgan
-- gulp
-- gulp-sass
-- node-sass
-
-### devDependencies
-
-- eslint-config-prettier
-- eslint-plugin-prettier
-- prettier
+### Chat
