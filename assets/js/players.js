@@ -1,4 +1,4 @@
-import { disableChat } from "./chat";
+import { disableChat, enableChat } from "./chat";
 import {
   disableCanvas,
   enableCanvas,
@@ -9,6 +9,7 @@ import {
 
 const board = document.getElementById("jsPBoard");
 const notifs = document.getElementById("jsNotifs");
+const timer = document.getElementById("jsTime");
 
 const addPlayers = (players) => {
   board.innerHTML = "";
@@ -31,14 +32,16 @@ export const handleGameStarted = () => {
   setNotif();
   disableCanvas();
   hideControls();
+  enableChat();
 };
 export const handleLeaderNotif = ({ word }) => {
   enableCanvas();
   showControls();
   disableChat();
-  setNotif(`당신이 화가에요, 그림: ${word}`);
+  setNotif(`당신 차례에요, 그림: ${word}`);
 };
 export const handleGameEnded = () => {
+  timer.innerText = "";
   setNotif("게임이 끝났습니다.");
   disableCanvas();
   hideControls();

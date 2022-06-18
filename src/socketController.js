@@ -7,6 +7,7 @@ let sockets = [];
 let inProgress = false;
 let word = null;
 let leader = null;
+let timeout = null;
 
 // --------- end variable ----------
 
@@ -25,22 +26,31 @@ const socketController = (socket, io) => {
 
   // 게임 시작 시 로직
   const startGame = () => {
-    if (inProgress === false) {
-      inProgress = true;
-      leader = chooseLeader();
-      word = chooseWord();
-      superBroadcast(events.gameStarting);
-      setTimeout(() => {
-        superBroadcast(events.gameStarted);
-        io.to(leader.id).emit(events.leaderNotif, { word });
-      }, 3000);
+    if (sockets.length > 1) {
+      if (inProgress === false) {
+        inProgress = true;
+        leader = chooseLeader();
+        word = chooseWord();
+        superBroadcast(events.gameStarting);
+        setTimeout(() => {
+          superBroadcast(events.gameStarted);
+          io.to(leader.id).emit(events.leaderNotif, { word });
+          timeout = setTimeout(endGame, 30000);
+          setInterval(superBroadcast(events.timer), 1000);
+        }, 3000);
+      }
     }
   };
 
   // 게임 종료 시 로직
   const endGame = () => {
+    if (timeout !== null) {
+      clearTimeout(timeout);
+    }
     inProgress = false;
     superBroadcast(events.gameEnded);
+    superBroadcast(events.timeover);
+    setTimeout(() => startGame(), 3000);
   };
 
   // 맞춘 사람 포인트 주고 게임 종료
@@ -53,6 +63,7 @@ const socketController = (socket, io) => {
     });
     sendPlayerUpdate();
     endGame();
+    clearTimeout(timeout);
   };
   // --------------------------- end function -------------------------
 
@@ -63,9 +74,7 @@ const socketController = (socket, io) => {
     sockets.push({ id: socket.id, points: 0, nickname });
     broadcast(events.newUser, { nickname });
     sendPlayerUpdate();
-    if (sockets.length === 2) {
-      startGame();
-    }
+    startGame();
   });
 
   // 연결 해제 이벤트 대기

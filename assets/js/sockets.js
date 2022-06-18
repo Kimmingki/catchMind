@@ -7,6 +7,8 @@ import {
   handleGameStarting,
   handleLeaderNotif,
   handlePlayerUpdate,
+  handleTimeOut,
+  handleTimer,
 } from "./players";
 
 let socket = null;

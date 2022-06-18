@@ -15,4 +15,18 @@
   - 정답자 포인트
   - 제시어
 
+통신은 사실상 SocketIO를 통하여 진행
+
+---
+
+### Tech
+
+- Server
+  - NodeJS / express
+  - SocketIO
+- Client
+  - Pug
+
+---
+
 ### Chat

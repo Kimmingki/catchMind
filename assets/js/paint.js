@@ -81,7 +81,6 @@ const fill = (color = null) => {
   if (color !== null) {
     ctx.fillStyle = color;
   }
-  console.log(ctx.fillStyle);
   ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
   ctx.fillStyle = currentColor;
 };
