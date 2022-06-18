@@ -36,7 +36,6 @@ const socketController = (socket, io) => {
           superBroadcast(events.gameStarted);
           io.to(leader.id).emit(events.leaderNotif, { word });
           timeout = setTimeout(endGame, 30000);
-          setInterval(superBroadcast(events.timer), 1000);
         }, 3000);
       }
     }
@@ -49,7 +48,6 @@ const socketController = (socket, io) => {
     }
     inProgress = false;
     superBroadcast(events.gameEnded);
-    superBroadcast(events.timeover);
     setTimeout(() => startGame(), 3000);
   };
 
